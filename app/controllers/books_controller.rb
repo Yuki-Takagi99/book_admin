@@ -3,9 +3,10 @@ class BooksController < ApplicationController
   around_action :action_logger, only: [:destroy]
 
   def show
-    respond_to do  |format|
+    # render :show # 省略することも可能
+    respond_to do |format|
       format.html
-      format.json
+      format.json { render json: @book }
     end
   end
 
